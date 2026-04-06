@@ -54,6 +54,7 @@ app.post("/signin", function(req,res){
     
 })
 
+//Auth Middleware --->
 function auth(req,res,next){
     const token = req.headers.token
     const decodeJWT = jwt.verify(token,JWT_SECRET);
@@ -68,16 +69,16 @@ function auth(req,res,next){
         })
     }
 }
-
-app.get("/me", auth, function(req,res){
-    const findUser = users.find(function(u){
+  
+app.get("/me", auth, function(req,res){   
+    const findUser = users.find(function(u){  
         if(u.username == req.username){
             return true
-        }
-        else{
+        }         
+        else{    
             return false
         }
-    })
+    })     
     if(findUser){
         res.json({
             username:findUser.username,
