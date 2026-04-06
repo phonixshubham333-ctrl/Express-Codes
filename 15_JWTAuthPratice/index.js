@@ -14,6 +14,10 @@ function logger (req,res,next){
 
 app.use(logger);
 
+app.get("/" , function(req,res){
+    res.sendFile(__dirname + "/public/index.html")
+})
+
 app.post("/signup", function(req,res){
     const username=req.body.username;
     const password= req.body.password;
