@@ -130,6 +130,38 @@ app.get("/me" ,auth, function(req,res){
 })
 
 //Delete the task from Todos
+app.delete("/delete/:taskno", auth, function(req,res){
+    const taskno = req.params.taskno;
+
+    const findUserForDelete = users.find(function(u){
+        if(u.username==req.username && u.password == req.password ){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    })
+    if(findUserForDelete){
+        const index = findUserForDelete.todos.findIndex(todo => todo.taskno===taskno);
+
+        if (index === -1) {
+        return res.status(404).json({ message: "Task not found" });
+    }
+       //Remove the Todo --->
+       findUserForDelete.todos.splice(index,1);
+
+       res.json({
+        msg:"Delete Successfully!!",
+        todos:findUserForDelete.todos
+       })
+    }
+    else{
+        res.status(403).json({
+            msg:"Failed to delete!!"
+        })
+    }
+})
 
 app.listen(3000);
 
