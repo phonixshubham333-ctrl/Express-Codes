@@ -122,3 +122,21 @@
 
 // console.log(user1.name);
 
+abstract class User {
+    name:string;
+    constructor(name:string){
+        this.name=name
+    }
+    abstract greet: ()=>string
+}
+
+class Employee implements User {
+    name: string;
+    constructor(name:string){
+        this.name=name;
+    }
+    greet(){
+        return "hi" + this.name
+    }
+}
+
