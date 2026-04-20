@@ -9,35 +9,14 @@
 //     return[-1,x]
 // }
 Object.defineProperty(exports, "__esModule", { value: true });
-// const array:number[] =[2,4,7,8,56,-2,65,745,-1,68];
-// console.log(linearSearch<number>(array,8));
-// const array1:string[]=["jwd","Shubham", "jshdwd","hello","i"];
-// console.log(linearSearch<string>(array1,"Shubham"));
-//Generics in Stack --->
-class Stack {
-    array;
-    constructor() {
-        this.array = [];
-    }
-    push(x) {
-        this.array.push(x);
-    }
-    pop() {
-        this.array.pop();
-    }
-    top() {
-        return this.array[this.array.length - 1];
-    }
-    display() {
-        console.log(this.array);
-    }
-}
-const st = new Stack();
-st.push("Shubham");
-st.push("i");
-st.push("g");
-st.push("Hello");
-st.display();
-st.pop();
-st.display();
+const obj = {
+    property: 22,
+    moreproperty: "Shubham"
+};
+console.log(obj.moreproperty);
+const customer = {
+    property: 45,
+    propertydetails: "BHK Kolkata 1 "
+};
+console.log(customer.property);
 //# sourceMappingURL=index.js.map

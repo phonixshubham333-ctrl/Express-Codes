@@ -16,37 +16,62 @@
 
 //Generics in Stack --->
 
-class Stack<T>{
-    private array : T[];
+// class Stack<T>{
+//     private array : T[];
 
-    constructor(){
-        this.array=[]
-    }
+//     constructor(){
+//         this.array=[]
+//     }
 
-    push(x:T):void{
-        this.array.push(x)
-    }
+//     push(x:T):void{
+//         this.array.push(x)
+//     }
 
-    pop():void {
-        this.array.pop();
-    }
+//     pop():void {
+//         this.array.pop();
+//     }
 
-    top():T{
-        return this.array[this.array.length-1]!
-    }
+//     top():T{
+//         return this.array[this.array.length-1]!
+//     }
 
-    display():void {
-        console.log(this.array)
-    }
+//     display():void {
+//         console.log(this.array)
+//     }
+// }
+
+// const st = new Stack<string>();
+// st.push("Shubham");
+// st.push("i");
+// st.push("g");
+// st.push("Hello");
+// st.display();
+// st.pop();
+// st.display();
+
+//generics in interface ---->
+interface custominterface <T1,T2> {
+    property:T1;
+    moreproperty:T2;
 }
 
-const st = new Stack<string>();
-st.push("Shubham");
-st.push("i");
-st.push("g");
-st.push("Hello");
-st.display();
-st.pop();
-st.display();
+const obj:custominterface<number,string>={
+     property:22,
+     moreproperty:"Shubham"
+}
 
+console.log(obj.moreproperty);
 
+//Usin Only Interfcace ---->
+
+interface customerDetails {
+    property:number,
+    propertydetails:string
+}
+
+const customer:customerDetails ={
+    property:45,
+    propertydetails:"BHK Kolkata 1 "
+}
+
+console.log(customer.property);
