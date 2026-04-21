@@ -1,1 +1,1 @@
-{"root":["./src/server.ts"],"version":"6.0.3"}
+{"root":["./src/server.ts","./src/config/index.ts","./src/controllers/ping.controller.ts","./src/routers/ping.routers.ts"],"version":"6.0.3"}

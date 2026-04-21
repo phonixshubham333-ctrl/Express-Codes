@@ -1,13 +1,13 @@
 import express from "express";
+import { serverConfig } from "./config/index.js";
+import { pingHandler } from "./controllers/ping.controller.js";
+import pingRouter from "./routers/ping.routers.js";
+
 
 const app = express();
 
-const PORT: number = 3000;
+app.use(pingRouter);
 
-app.get("/ping", (req, res) => {
-    res.send("Hello")
-})
-
-app.listen(PORT, () => {
-    console.log(`I am listening from the PORT ${PORT}`)
+app.listen(serverConfig.PORT, () => {
+    console.log(`I am listening from the PORT ${serverConfig.PORT}`)
 })
