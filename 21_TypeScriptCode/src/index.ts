@@ -140,3 +140,13 @@ class Employee implements User {
     }
 }
 
+interface Admin{
+    name:string,
+    permissions:string
+}
+
+interface User {
+    name:string,
+    description:string
+}
+

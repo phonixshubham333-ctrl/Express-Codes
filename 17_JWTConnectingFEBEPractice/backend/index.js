@@ -75,7 +75,6 @@ function auth(req,res,next){
 }
 
 //Write a /me Endpont to get the USer Details ---->
-
 app.get("/me",auth,function(req,res){
     const finduser = users.find(function(u){
         if(u.username==req.username){

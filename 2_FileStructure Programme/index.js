@@ -16,6 +16,18 @@ app.get('/file', function(req,res){
             res.send(data)
         }
     })
+    
+})
+
+app.post("/send", function(req,res){
+    fs.writeFile(filepath,"utf-8",function(err,data){
+        if(err){
+            res.send(`the error is ${err}`)
+        }
+        else{
+            res.send("I am Writing here")
+        }
+    })
 })
 
 app.listen(3000)

@@ -75,3 +75,4 @@ const customer:customerDetails ={
 }
 
 console.log(customer.property);
+
