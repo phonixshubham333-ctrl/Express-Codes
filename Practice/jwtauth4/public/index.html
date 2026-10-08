@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js"></script>
+  <script>
+    async function signup() {
+      const response = await axios.post("http://localhost:3001/signup", {
+        username: document.getElementById("signup-username").value,
+        password: document.getElementById("signup-password").value,
+      });
+      document.getElementById("response-signup").innerText =
+        response.data.message;
+    }
+    async function signin() {
+      const response = await axios.post("http://localhost:3001/signin", {
+        username: document.getElementById("signin-username").value,
+        password: document.getElementById("signin-password").value,
+      });
+      localStorage.setItem("token", response.data.token);
+      document.getElementById("response-signin").innerHTML =
+        response.data.message;
+    }
+    async function showdetails() {
+      const token = localStorage.getItem("token");
+      try {
+        const response = await axios.get("http://localhost:3001/me", {
+          headers: { token },
+        });
+        document.getElementById("response-username").innerText =
+          response.data.username || "";
+        document.getElementById("response-password").innerText =
+          response.data.password || "";
+      } catch (error) {
+        document.getElementById("response-username").innerText = "";
+        document.getElementById("response-password").innerText =
+          error.response?.data?.message || error.message;
+      }
+    }
+  </script>
+  <body>
+    <div>
+      Signup
+      <input type="text" placeholder="username" id="signup-username" />
+      <input type="text" placeholder="password" id="signup-password" />
+      <button onclick="signup()">Signup</button>
+      <div id="response-signup"></div>
+    </div>
+    <div>
+      Signin
+      <input type="text" placeholder="username" id="signin-username" />
+      <input type="text" placeholder="password" id="signin-password" />
+      <button onclick="signin()">Signin</button>
+      <div id="response-signin"></div>
+    </div>
+    <div>
+      <button onclick="showdetails()">Show Details</button>
+      <div id="response-username"></div>
+      <div id="response-password"></div>
+    </div>
+  </body>
+</html>
